@@ -1,0 +1,12 @@
+PRACTICAL 1: IMPLEMENT OUERY ON MONGO DB BASICS:-
+
+1. show dbs
+2. db
+3. use<database_name>
+4. db.createCollection<"collection_name">
+5. show collections
+6. show dbs
+7. db.tyit.insertOne([{id:"1",name:"blackfyre",age:"20",place:"mumbai"}])
+8. db.tyit.insertMany([{id:"1",name:"blackfyre",age:"20",place:"mumbai"},{{id:"2",name:"raiden",age:"20",place:"mumbai"},{{id:"3",name:"asuna",age:"20",place:"mumbai"}])
+9. db.tyit.find()
+10. db.tyit.deleteOne({_id:ObjectId("object_id")})
