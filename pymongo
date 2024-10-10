@@ -7,11 +7,11 @@ print(myclient.list_database_names())
 db=myclient["shreyash1"]
 coll=db['data']
 
-data=[{"_id":"11","name":"shreyash","age":"20","city":"mumbai"},
-      {"_id":"12","name":"shiva","age":"20","city":"hydrabad"},
-      {"_id":"14","name":"ritesh","age":"20","city":"up"},
-      {"_id":"15","name":"vansh","age":"20","city":"pubjab"},
-      {"_id":"16","name":"bhavesh","age":"20","city":"pune"},]
+data=[{"_id":"11","name":"..","age":"20","city":"mumbai"},
+      {"_id":"12","name":",,","age":"20","city":"hydrabad"},
+      {"_id":"14","name":"..","age":"20","city":"up"},
+      {"_id":"15","name":"..","age":"20","city":"pubjab"},
+      {"_id":"16","name":".","age":"20","city":"pune"},]
 res=coll.insert_many(data)
 print("Data Inserted")
 print(res.inserted_ids)
@@ -28,9 +28,9 @@ from pymongo import MongoClient
 client=MongoClient('localhost',27017)
 db=client['myBase']
 coll=db['MYExample4']
-data=[{"_id":"10","name":"shreyash","age":"20","city":"mumbai"},
-      {"_id":"11","name":"ritesh","age":"18","city":"mathura"},
-      {"_id":"12","name":"neehal","age":"19","city":"azamgarh"},]
+data=[{"_id":"10","name":"..","age":"20","city":"mumbai"},
+      {"_id":"11","name":".","age":"18","city":"mathura"},
+      {"_id":"12","name":".","age":"19","city":"azamgarh"},]
 res=coll.insert_many(data)
 print("Data inserted..")
 print("Documents in the collection")
@@ -47,9 +47,9 @@ from pymongo import MongoClient
 client=MongoClient('localhost',27017)
 db=client['myBased']
 coll=db['MyExample1']
-data=[{"_id":"10","name":"shreyash","age":"20","city":"mumbai"},
-      {"_id":"11","name":"ritesh","age":"18","city":"mathura"},
-      {"_id":"12","name":"neehal","age":"19","city":"azamgarh"},]
+data=[{"_id":"10","name":".","age":"20","city":"mumbai"},
+      {"_id":"11","name":".","age":"18","city":"mathura"},
+      {"_id":"12","name":".","age":"19","city":"azamgarh"},]
 res=coll.insert_many(data)
 print("Data inserted..")
 print(res.inserted_ids)
