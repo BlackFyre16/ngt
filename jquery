@@ -1,0 +1,440 @@
+Q.1 Display the current date and time using Jquery:
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Date and Time using jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div id="datetime"></div>
+
+    <script>
+        $(document).ready(function() {
+            function displayDateTime() {
+                var now = new Date();
+                var dateTimeString = now.toLocaleString();
+                $("#datetime").text(dateTimeString);
+            }
+
+            displayDateTime(); // Display immediately
+
+            // Optional: Update the date and time every second
+            setInterval(displayDateTime, 1000);
+        });
+    </script>
+</body>
+</html>
+
+
+Q.2 Display date and time using slide down in Jquery
+CODE:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date and Time with Alert and SlideDown</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #datetime {
+            display: none; /* Hidden initially */
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="showDateTime">Show Date and Time</button>
+
+    <div id="datetime"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#showDateTime").click(function() {
+                // Get the current date and time
+                var now = new Date();
+                var dateTimeString = now.toLocaleString();
+
+                // Show the date and time using alert
+                alert("Current Date and Time: " + dateTimeString);
+
+                // Show the date and time using slideDown
+                $("#datetime").text("Current Date and Time: " + dateTimeString).slideDown(1000);  // 1 second slide down
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+
+Q4 Write a program using jQuery to accept 2 numbers from the user and display it's sum using 
+A) alert()
+B) slideDown()
+CODE:-
+a)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum of Two Numbers - Alert</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <label for="num1">Number 1:</label>
+    <input type="text" id="num1">
+    <br><br>
+    <label for="num2">Number 2:</label>
+    <input type="text" id="num2">
+    <br><br>
+    <button id="calculateSum">Calculate Sum (Alert)</button>
+    <div id="showsum"></div>
+    <script>
+        $(document).ready(function() {
+            $("#calculateSum").click(function() {
+                var num1 = parseFloat($("#num1").val());
+                var num2 = parseFloat($("#num2").val());
+                
+                if (!isNaN(num1) && !isNaN(num2)) {
+                    var sum = num1 + num2;
+                    alert("The sum is: " + sum);
+                } else {
+                    alert("Please enter valid numbers.");
+                }
+                $("#showsum").text("the sum is "+ sum).slideDown(1000);
+
+            });
+        });
+    </script>
+</body>
+</html>
+
+Q.5 Write a program to display table of a user input number
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 300px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="number">Enter a number:</label>
+    <input type="text" id="number">
+    <br><br>
+    <button id="showTable">Show Multiplication Table</button>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#showTable").click(function() {
+                var number = parseInt($("#number").val());
+
+                if (!isNaN(number)) {
+                    var tableContent = "<table><tr><th>Multiplication Table of " + number + "</th></tr>";
+                    
+                    for (var i = 1; i <= 10; i++) {
+                        tableContent += "<tr><td>" + number + " x " + i + " = " + (number * i) + "</td></tr>";
+                    }
+                    
+                    tableContent += "</table>";
+                    $("#result").html(tableContent);
+                } else {
+                    $("#result").html("Please enter a valid number.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+Q.6 Write a program to accept 2 numbers from the user (m and n), display all the numbers between m and n given that m is smaller than n.
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Numbers Between m and n</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <label for="num1">Enter m (smaller number):</label>
+    <input type="text" id="num1">
+    <br><br>
+    <label for="num2">Enter n (larger number):</label>
+    <input type="text" id="num2">
+    <br><br>
+    <button id="showNumbers">Show Numbers Between m and n</button>
+
+    <div id="result"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#showNumbers").click(function() {
+                var m = parseInt($("#num1").val());
+                var n = parseInt($("#num2").val());
+
+                if (!isNaN(m) && !isNaN(n) && m < n) {
+                    var numbers = "";
+                    for (var i = m + 1; i < n; i++) {
+                        numbers += i + " ";
+                    }
+                    
+                    if (numbers === "") {
+                        $("#result").html("No numbers between " + m + " and " + n);
+                    } else {
+                        $("#result").html("Numbers between " + m + " and " + n + ": " + numbers);
+                    }
+                } else if (m >= n) {
+                    $("#result").html("Please ensure that m is smaller than n.");
+                } else {
+                    $("#result").html("Please enter valid numbers.");
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+Q.7 Write a program using jquery yo display "hello september" when click on a button.
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello September</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #message {
+            margin-top: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="showMessage">Click Me</button>
+
+    <div id="message"></div>
+
+    <script>
+        $(document).ready(function() {
+            $("#showMessage").click(function() {
+                $("#message").text("Hello September");
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+
+Q.8 FADE IN IN JQUERY
+CODE:=
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function (){
+                $("button").click(function(){
+                    $("#div1").fadeIn(3000);
+                    $("#div2").fadeIn(2000);
+                    $("#div3").fadeIn(3000);
+                });
+            });
+        </script>
+    </head>
+    <body bgcolor="black">
+        <p>Demostrate fadeIn() with different parameters</p>
+        <button style="box-shadow: inset -8px -8px 15px red;">Click to fade boxes</button><br><br>
+
+      
+      <div id="div1" style="width:80px;height:80px;background-color: navy;
+      display:none;"></div><br>
+      <div id="div2" style="width:80px;height:80px;background-color: white;display:none"></div><br>
+      <div id="div3" style="width:80px;height:80px;background-color: red;display:none;"></div><br>
+    </body>
+
+
+</html>
+
+Q.9 FADE OUT IN JQUERY
+CODE:0
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fade Out Boxes in jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            background-color: skyblue;
+        }
+        #container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="fadeButton">Fade Out Boxes</button>
+
+    <div id="container">
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $("#fadeButton").click(function() {
+                $(".box").fadeOut(1000);  // Fade out all boxes over 1 second
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+Q.10 TABLE GENERATTER:
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <button id="generateTable">Generate Table</button>
+    <div id="tableContainer"></div>
+    <script>
+        $(document).ready(function(){
+          $("#generateTable").click(function(){
+            let tableNumber=prompt("Enter the number for the multiplication table:");
+            tableNumber=parseInt(tableNumber);
+
+            if(! isNaN(tableNumber)){
+                let tableHtml="<h3>Multiplication Table for " + tableNumber +" </h3><ul>";
+                    for (let i=1;i<=10;i++){
+                        tableHtml += tableNumber +"x"+ i + "=" +(tableNumber * i)+"<br>";
+                    }
+                    tableHtml += "</ul>";
+                    $("#tableContainer").html(tableHtml);
+                }
+                else{
+                    alert("Please enter a valid number.");
+                
+                }});}); 
+            
+        
+    
+    </script>
+</body>
+</html>
+
+11.COUNTER
+CODE:-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Timer</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        #countdown {
+            font-size: 2em;
+            margin: 20px 0;
+        }
+        .unit {
+            display: inline-block;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>Countdown to Event</h1>
+<div id="countdown">
+    <div class="unit" id="days">00</div> Days
+    <div class="unit" id="hours">00</div> Hours
+    <div class="unit" id="minutes">00</div> Minutes
+    <div class="unit" id="seconds">00</div> Seconds
+</div>
+<script>
+$(document).ready(function() {
+    const eventDate = new Date("2024-12-31T23:59:59").getTime();
+    const countdownFunction = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = eventDate - now;
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        $("#days").text(String(days).padStart(2, '0'));
+        $("#hours").text(String(hours).padStart(2, '0'));
+        $("#minutes").text(String(minutes).padStart(2, '0'));
+        $("#seconds").text(String(seconds).padStart(2, '0'));
+        if (distance < 0) {
+            clearInterval(countdownFunction);
+            $("#countdown").html("<h2>The event has started!</h2>");
+        }    }, 1000);});
+</script></body></html>
+
