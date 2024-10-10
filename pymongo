@@ -1,0 +1,59 @@
+INSERT:
+import pymongo
+myclient=pymongo.MongoClient("mongodb://localhost:27017/")
+mydb=myclient["shreyash1"]
+print(myclient.list_database_names())
+
+db=myclient["shreyash1"]
+coll=db['data']
+
+data=[{"_id":"11","name":"shreyash","age":"20","city":"mumbai"},
+      {"_id":"12","name":"shiva","age":"20","city":"hydrabad"},
+      {"_id":"14","name":"ritesh","age":"20","city":"up"},
+      {"_id":"15","name":"vansh","age":"20","city":"pubjab"},
+      {"_id":"16","name":"bhavesh","age":"20","city":"pune"},]
+res=coll.insert_many(data)
+print("Data Inserted")
+print(res.inserted_ids)
+print("First Record of the collection")
+print(coll.find_one())
+print("Record where id is 14")
+print(coll.find_one({"_id":"14"}))
+print("All Data")
+print(res.data)
+
+
+UPDATE:
+from pymongo import MongoClient
+client=MongoClient('localhost',27017)
+db=client['myBase']
+coll=db['MYExample4']
+data=[{"_id":"10","name":"shreyash","age":"20","city":"mumbai"},
+      {"_id":"11","name":"ritesh","age":"18","city":"mathura"},
+      {"_id":"12","name":"neehal","age":"19","city":"azamgarh"},]
+res=coll.insert_many(data)
+print("Data inserted..")
+print("Documents in the collection")
+for doc1 in coll.find():
+    print(doc1)
+coll.update_many({},{"$set":{"city":"jaipur"}})
+print("Documents in the collection after update operation:")
+for doc2 in coll.find():
+    print(doc2)
+
+
+DELETE:
+from pymongo import MongoClient
+client=MongoClient('localhost',27017)
+db=client['myBased']
+coll=db['MyExample1']
+data=[{"_id":"10","name":"shreyash","age":"20","city":"mumbai"},
+      {"_id":"11","name":"ritesh","age":"18","city":"mathura"},
+      {"_id":"12","name":"neehal","age":"19","city":"azamgarh"},]
+res=coll.insert_many(data)
+print("Data inserted..")
+print(res.inserted_ids)
+coll.delete_one({"_id":"11"})
+print("documents in the collection after update operation:")
+for doc2 in coll.find():
+    print(doc2)
